@@ -1,0 +1,22 @@
+{
+  "name": "advent-of-code-2021",
+  "version": "1.0.0",
+  "description": "Solutions for Advent of Code 2021",
+  "scripts": {
+    "day": "node index.js"
+  },
+  "keywords": [
+    "advent-of-code",
+    "2021"
+  ],
+  "author": "Adrian Wieprzkowicz",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.11.11",
+    "axios": "^0.24.0",
+    "markdown-table": "^3.0.1",
+    "prettier": "2.5.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  }
+}
