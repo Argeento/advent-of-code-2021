@@ -15,7 +15,7 @@ export interface Point extends Position {}
 export interface Point3d extends Position3d {}
 
 export function getLinesFromFile(file: string): string[] {
-  return readFileSync(file).toString().split('\n')
+  return readFileSync(file).toString().trim().split('\n')
 }
 
 export function getNumbersFromFile(file: string): number[] {
@@ -86,4 +86,11 @@ export function getManhatanDistance(
   return (
     Math.abs(positionA.x - positionB.x) + Math.abs(positionA.y - positionB.y)
   )
+}
+
+export function match<
+  Variant extends PropertyKey,
+  Options extends Record<Variant, () => any>
+>(variant: Variant, options: Options): ReturnType<Options[Variant]> {
+  return options[variant]()
 }
