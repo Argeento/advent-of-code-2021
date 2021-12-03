@@ -94,3 +94,7 @@ export function match<
 >(variant: Variant, options: Options): ReturnType<Options[Variant]> {
   return options[variant]()
 }
+
+export function log(...arg): void {
+  console.log(...arg)
+}
