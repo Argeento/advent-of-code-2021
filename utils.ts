@@ -79,7 +79,7 @@ export function flipY<T>(arr: Array2d<T>): Array2d<T> {
   return copy
 }
 
-export function getManhatanDistance(
+export function getManhattanDistance(
   positionA: Position,
   positionB: Position = { x: 0, y: 0 }
 ): number {
