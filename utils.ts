@@ -98,3 +98,16 @@ export function match<
 export function log(...arg): void {
   console.log(...arg)
 }
+
+export function getColumn<T>(array: T[][], columnNumber: number): T[] {
+  const column = []
+  for (const row of array) {
+    column.push(row[columnNumber])
+  }
+
+  return column
+}
+
+export function negateFunction(fn: (...arg: any) => boolean): () => boolean {
+  return (...arg) => !fn(...arg)
+}
