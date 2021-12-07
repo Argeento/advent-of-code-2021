@@ -19,7 +19,11 @@ export function getLinesFromFile(file: string): string[] {
 }
 
 export function getNumbersFromFile(file: string): number[] {
-  return getLinesFromFile(file).map(line => parseFloat(line))
+  const lines = getLinesFromFile(file)
+
+  return lines.length === 1
+    ? lines[0].split(',').map(Number)
+    : getLinesFromFile(file).map(line => parseFloat(line))
 }
 
 export function add(a: number, b: number): number {
@@ -110,4 +114,22 @@ export function getColumn<T>(array: T[][], columnNumber: number): T[] {
 
 export function negateFunction(fn: (...arg: any) => boolean): () => boolean {
   return (...arg) => !fn(...arg)
+}
+
+export function memorize<Fn extends (...args: any[]) => any>(
+  fn: Fn
+): (...args: Parameters<Fn>) => ReturnType<Fn> {
+  const memo = new Map()
+
+  return (...args) => {
+    const uniqKey = JSON.stringify(args)
+
+    if (memo.has(uniqKey)) {
+      return memo.get(uniqKey)
+    } else {
+      const returnValue = fn(...args)
+      memo.set(uniqKey, returnValue)
+      return returnValue
+    }
+  }
 }
