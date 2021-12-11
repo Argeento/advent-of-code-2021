@@ -133,3 +133,14 @@ export function memorize<Fn extends (...args: any[]) => any>(
     }
   }
 }
+
+export function loop2d<T>(
+  array: T[][],
+  callback: (y: number, x: number, item: T) => void
+): void {
+  for (let y = 0; y < array.length; y++) {
+    for (let x = 0; x < array[0].length; x++) {
+      callback(y, x, array[y][x])
+    }
+  }
+}
