@@ -26,6 +26,10 @@ export function getNumbersFromFile(file: string): number[] {
     : getLinesFromFile(file).map(line => parseFloat(line))
 }
 
+export function getArray2dFromFile(file: string): number[][] {
+  return getLinesFromFile(file).map(line => line.split('').map(Number))
+}
+
 export function add(a: number, b: number): number {
   return a + b
 }
@@ -139,7 +143,7 @@ export function loop2d<T>(
   callback: (y: number, x: number, item: T) => void
 ): void {
   for (let y = 0; y < array.length; y++) {
-    for (let x = 0; x < array[0].length; x++) {
+    for (let x = 0; x < array[y].length; x++) {
       callback(y, x, array[y][x])
     }
   }
